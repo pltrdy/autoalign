@@ -1,0 +1,6 @@
+[submodule "autoalign/external/C99"]
+	path = autoalign/external/C99
+	url = https://github.com/pltrdy/C99.git
+[submodule "autoalign/external/alemi_segmentation"]
+	path = autoalign/external/alemi_segmentation
+	url = https://github.com/pltrdy/alemi_segmentation.git
