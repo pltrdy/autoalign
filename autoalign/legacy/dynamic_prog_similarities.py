@@ -23,7 +23,8 @@ def replace_nan(tensor, value=0):
     return tensor
 
 
-def ranged_reduce(reduce_op, tensor, range_y, range_x, empty_val=0.0, masking_fct=lambda x: x):
+def ranged_reduce(reduce_op, tensor, range_y, range_x,
+                  empty_val=0.0, masking_fct=lambda x: x):
     tensor_slice = tensor[range_y, range_x]
     tensor_masked = masking_fct(tensor_slice)
 
@@ -33,7 +34,8 @@ def ranged_reduce(reduce_op, tensor, range_y, range_x, empty_val=0.0, masking_fc
     return reduce_op(tensor_masked)
 
 
-def reduce_scores(ctm_slices, docx_slices, scores, reduce_op, empty_val=0.0, masking_fct=lambda x: x):
+def reduce_scores(ctm_slices, docx_slices, scores, reduce_op,
+                  empty_val=0.0, masking_fct=lambda x: x):
     all_scores = []
     for i, ctm_slice in enumerate(ctm_slices):
         print("%d: " % i, str(ctm_slice))
@@ -53,7 +55,8 @@ def avg_scores(ctm_slices, docx_slices, scores):
     return reduce_scores(ctm_slices, docx_slices, scores, op=tensor_mean)
 
 
-def dp(scores, score_scale_fct=lambda x: x, score_pre_scale_fct=lambda x: x, DIAGDP=False, dhw=0.9999, dgw=0.9999):
+def dp(scores, score_scale_fct=lambda x: x,
+       score_pre_scale_fct=lambda x: x, DIAGDP=False, dhw=0.9999, dgw=0.9999):
     # softmax = torch.nn.functional.softmax
     scores = score_pre_scale_fct(scores)
 
@@ -83,9 +86,9 @@ def dp(scores, score_scale_fct=lambda x: x, score_pre_scale_fct=lambda x: x, DIA
     # DIAGDP = False
 
     y, x = scores.size()
-    t = torch.zeros([y+1, x+1])
-    hist = torch.zeros([y+1, x+1])
-    W = torch.ones([y+1, x+1])
+    t = torch.zeros([y + 1, x + 1])
+    hist = torch.zeros([y + 1, x + 1])
+    W = torch.ones([y + 1, x + 1])
     for j in range(1, x + 1):
         for i in range(1, y + 1):
             # if DIAGDP:
@@ -193,7 +196,8 @@ def slice_len(_slice):
     return np.ceil((stop - start) / step)
 
 
-def viz_dp(cumul_scores, scores, dp_scores, dp_hist, docx_slices, ctm_slices, path, output_path="similarities.html"):
+def viz_dp(cumul_scores, scores, dp_scores, dp_hist, docx_slices,
+           ctm_slices, path, output_path="similarities.html"):
     path = [";".join([str(_) for _ in coords]) for coords in path]
     margin_left = 10
     margin_top = 10
@@ -277,7 +281,8 @@ def viz_dp(cumul_scores, scores, dp_scores, dp_hist, docx_slices, ctm_slices, pa
     print("Viz_dp output: %s" % output_path)
 
 
-def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbose=False):
+def align_slices(dp_path, docx_slices, ctm_slices,
+                 one_doc_per_ctm=False, verbose=False):
     def log(*args, **kwargs):
         if verbose:
             print(*args, **kwargs)
@@ -308,7 +313,7 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
     log("* ctm[#%d]: " % i_ctm_slice, ctm_slices[i_ctm_slice])
 
     def find_prev_aligned():
-        for i in range(len(aligned_slices)-2, 1, -1):
+        for i in range(len(aligned_slices) - 2, 1, -1):
             if len(aligned_slices[i]) > 0:
                 return aligned_slices[i][-1]
 
@@ -321,8 +326,10 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
             log("[NEW DOCX SLICE] %d is over w/ %s" %
                 (i_docx_slice, str(cur_slices)))
 
-            if one_doc_per_ctm and len(cur_slices) == 1 and len(aligned_slices) >= 2:
-                # only 1 CTM means no CTM border, therefore we must check_count a bit
+            if one_doc_per_ctm and len(
+                    cur_slices) == 1 and len(aligned_slices) >= 2:
+                # only 1 CTM means no CTM border, therefore we must check_count
+                # a bit
                 log("CHECK-COUNT: new docx slice after a len=1 one")
                 i_prev_aligned_doc = max(len(aligned_slices) - 2, 0)
                 while i_prev_aligned_doc > 0:
@@ -334,7 +341,7 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
                     log("\t!! [%d|%d] higher cur_count" %
                         (cur_count, prev_count))
                     log("\t removing from align[%d|%d](%s), keeping in cur" % (
-                        i_prev_aligned_doc, i_prev_aligned_doc-len(aligned_slices), str(aligned_slices[-2])))
+                        i_prev_aligned_doc, i_prev_aligned_doc - len(aligned_slices), str(aligned_slices[-2])))
                     _ = aligned_slices[i_prev_aligned_doc].pop()
                     if not _ in cur_slices:
                         cur_slices.insert(0, _)
@@ -357,9 +364,9 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
                     if len(cur_slices) > 0:
                         if one_doc_per_ctm:
                             assert cur_slices[0] + \
-                                1 == fpa, "%d != %d" % (cur_slices[0]+1, fpa)
+                                1 == fpa, "%d != %d" % (cur_slices[0] + 1, fpa)
                         else:
-                            assert fpa in [cur_slices[0], cur_slices[0]+1]
+                            assert fpa in [cur_slices[0], cur_slices[0] + 1]
                 except AssertionError as e:
                     log("aligned_slices[-1]: '%s'" % str(aligned_slices[-1]))
                     log("aligned_slices[-2]: '%s'" % str(aligned_slices[-2]))
@@ -370,7 +377,7 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
             i_docx_slice -= 1
             log("\t (#aligned_slices: %d)" % len(aligned_slices))
 
-        elif i_ctm_slice >= 0 and (not inslice(x, ctm_slices[i_ctm_slice]) or i_coord+1 == len(dp_path)):
+        elif i_ctm_slice >= 0 and (not inslice(x, ctm_slices[i_ctm_slice]) or i_coord + 1 == len(dp_path)):
             # new ctm slice on position
             log("[NEW CTM SLICE] (#%d is over)" % (i_ctm_slice))
 
@@ -385,7 +392,7 @@ def align_slices(dp_path, docx_slices, ctm_slices, one_doc_per_ctm=False, verbos
                             break
                         i_prev_aligned_doc -= 1
                     log("\t(using i_prev_aligned_doc=%d (i.e. %d)" % (
-                        i_prev_aligned_doc, i_prev_aligned_doc-len(aligned_slices)))
+                        i_prev_aligned_doc, i_prev_aligned_doc - len(aligned_slices)))
                     if len(aligned_slices[i_prev_aligned_doc]) >= 1:
                         log("\t(this prev_align has >= 1 ctm, continuing)")
                         if cur_slices[-1] == aligned_slices[i_prev_aligned_doc][-1]:
@@ -467,7 +474,7 @@ def viz_alignement(scores, slices_align, docx_slices, ctm_slices, docx_sentences
         slices_align(list[list[int]]): alignment of docx to ctm.
             slices_align[i] contains id j such that
             ctm_slices[j] is aligned with docx_slices[i]
-            extra_data: dict to save in output_pt in the first record 
+            extra_data: dict to save in output_pt in the first record
                         i.e. for all (k, v) in extra_data there will be
                         align[0][k] = v, align being saved to `output_pt`
     """

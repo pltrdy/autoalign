@@ -17,7 +17,7 @@ def timefunc(f):
 
 
 def tabs(n=1):
-    return "".join(["\t"]*n)
+    return "".join(["\t"] * n)
 
 
 class Timer:

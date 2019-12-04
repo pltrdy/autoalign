@@ -22,25 +22,25 @@ def init_object_by_path(path, args=[], kwargs={}):
 
 
 def instantiate(objects):
-    if type(objects) == str:
+    if isinstance(objects, str):
         objects = [objects]
 
     iobjects = []
     for i, object in enumerate(objects):
-        if type(object) == str:
+        if isinstance(object, str):
             iobjects += [init_object_by_path(object)]
-        elif type(object) == tuple or type(object) == list:
+        elif isinstance(object, tuple) or isinstance(object, list):
             path = object[0]
             args = []
             kwargs = {}
 
-            if type(object[1]) == dict:
+            if isinstance(object[1], dict):
                 kwargs = object[1]
             else:
                 args = object[1]
 
             if len(object) == 3:
-                assert type(object[2]) == dict
+                assert isinstance(object[2], dict)
                 kwargs = object[2]
 
             iobjects += [init_object_by_path(path, args, kwargs)]
@@ -55,7 +55,7 @@ class Pipeline:
         for module in self.modules:
             try:
                 o = module(**kwargs)
-            except:
+            except BaseException:
                 import sys
                 debug_keys = ["ctm_paths", "docx_path"]
                 msg = ("Pipeline Exception calling: '%s' with %s"

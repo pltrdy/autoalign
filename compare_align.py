@@ -36,7 +36,8 @@ def last_chars(txt, n):
     return "".join(txt.split())[-n:]
 
 
-def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms, dp_table=None, quiet=True):
+def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm,
+                 h_n_doc, all_final_ctms, dp_table=None, quiet=True):
     forbid_double_ctm = True
 
     mismatch_count = 0
@@ -117,7 +118,7 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
         debug_n = 150
         print("[Error] content does not match at all")
         print("[Debug] len: final_ctm: %d, hyp_ctms: %d" %
-              (len(all_final_ctms),  len(all_hyp_ctms)))
+              (len(all_final_ctms), len(all_hyp_ctms)))
         print("[Debug] first %d final: [%s]" % (debug_n, "\n\t".join(
             [_['text'] for _ in all_final_ctms[:debug_n]])))
         print("[Debug] first %d hyp: [%s]" %
@@ -168,28 +169,32 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
             txt = txt.replace("'", "")
             return txt
 
-        if first_chars(all_hyp_ctms[hi], cmp_n_chars) != first_chars(fctm, cmp_n_chars):
+        if first_chars(all_hyp_ctms[hi], cmp_n_chars) != first_chars(
+                fctm, cmp_n_chars):
             # if True:
-            if simplify(last_chars(all_hyp_ctms[hi], cmp_n_chars)) != simplify(last_chars(fctm, cmp_n_chars)):
+            if simplify(last_chars(all_hyp_ctms[hi], cmp_n_chars)) != simplify(
+                    last_chars(fctm, cmp_n_chars)):
                 mismatch_count += 1
                 tot_mismatch_count += 1
                 print("MISMATCH IN COMPARE ALIGN (%d, %d)" %
                       (mismatch_count, tot_mismatch_count))
                 n_words = len(all_hyp_ctms[hi].split())
-                if (mismatch_count > max_mismatch or tot_mismatch_count > max_tot_mismatch) and n_words > 2:
+                if (mismatch_count > max_mismatch or tot_mismatch_count >
+                        max_tot_mismatch) and n_words > 2:
                     log("assertion error, logging next hyp/final")
                     log("hyp-1: \n\t'%s', final-1: \n\t'%s'" % (first_chars(
-                        all_hyp_ctms[hi-1], 15), first_chars(all_final_ctms[fi-1]["text"], 15)))
+                        all_hyp_ctms[hi - 1], 15), first_chars(all_final_ctms[fi - 1]["text"], 15)))
                     log("hyp: \n\t'%s', final: \n\t'%s'" % (first_chars(
                         all_hyp_ctms[hi], 15), first_chars(all_final_ctms[fi]["text"], 15)))
                     log("hyp+1: \n\t'%s', final+1: \n\t'%s'" % (first_chars(
-                        all_hyp_ctms[hi+1], 15), first_chars(all_final_ctms[fi+1]["text"], 15)))
+                        all_hyp_ctms[hi + 1], 15), first_chars(all_final_ctms[fi + 1]["text"], 15)))
                     log("hyp+2: \n\t'%s', final+2: \n\t'%s'" % (first_chars(
-                        all_hyp_ctms[hi+2], 15), first_chars(all_final_ctms[fi+2]["text"], 15)))
+                        all_hyp_ctms[hi + 2], 15), first_chars(all_final_ctms[fi + 2]["text"], 15)))
                     raise ValueError()
                 else:
                     hi += 1
-                    if hi >= len(all_hyp_ctms) - 1 and fi >= len(all_final_ctms) - 1:
+                    if hi >= len(all_hyp_ctms) - \
+                            1 and fi >= len(all_final_ctms) - 1:
                         log("\t~~> Breaking [hi or fi too high] (instead of continuing)")
                         break
                     continue
@@ -212,7 +217,7 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
         tot += 1
         log("f-aligned: %d" % f_aligned)
         log("h-aligned: %d" % h_aligned)
-        log("%d/%d, %.3f" % (tot_aligned, tot, 100*tot_aligned/tot))
+        log("%d/%d, %.3f" % (tot_aligned, tot, 100 * tot_aligned / tot))
 
         if int(f['id'].split('_')[2]) > 0:
             # looking for subsegements i.e. x_y_1, x_y_2 etc..
@@ -232,7 +237,8 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
         sw = fctm.startswith(hctm)
 
         # if not sw:
-        if (True or hi >= len(all_hyp_ctms) - 1) and fi >= len(all_final_ctms) - 1:
+        if (True or hi >= len(all_hyp_ctms) -
+                1) and fi >= len(all_final_ctms) - 1:
             # only breaking on final
             log("\t~~> Breaking [hi or fi too high]")
 
@@ -263,12 +269,12 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
 
     log("tot: %d" % tot)
     log("tot_aligned: %d" % tot_aligned)
-    log("%%: %.3f" % (100*tot_aligned/tot))
+    log("%%: %.3f" % (100 * tot_aligned / tot))
 
     # n sentences / n segments
     # Alemi et al 2015
     # (k is taken to be one less than the integer closest to half of the number of elements divided by the number of segments in the reference segmentation.)
-    k = round(1/2*(len(hseg) / sum(fseg))-1)
+    k = round(1 / 2 * (len(hseg) / sum(fseg)) - 1)
     win_diff = windowdiff(hseg, fseg, k=k, boundary=1)
 
     hyp_score = -1
@@ -283,9 +289,9 @@ def _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm, h_n_doc, all_final_ctms
         # thats not trivial, but it remain true...
         len_path = sum(dp_table.size()) - 4
 
-    r = (tot, tot_aligned, 100*tot_aligned/tot, win_diff,
-         tot_words, words_aligned, 100*words_aligned/tot_words,
-         tot_not_aligned, words_not_aligned, 100*words_not_aligned/tot_words,
+    r = (tot, tot_aligned, 100 * tot_aligned / tot, win_diff,
+         tot_words, words_aligned, 100 * words_aligned / tot_words,
+         tot_not_aligned, words_not_aligned, 100 * words_not_aligned / tot_words,
          alignment, max_tot_mismatch,
          hyp_score, hyp_max_score, hyp_score_by_seg, len_path)
 
@@ -360,7 +366,7 @@ def compare_align(hyp_dir, final_path, prefix=None, quiet=False, output=None):
                              all_final_ctms, dp_table=dp_table, quiet=quiet)
             results.append(r)
             res_dict[hyp_path] = r
-        except:
+        except BaseException:
             print("Caught exception with: hyp_path: '%s' final: '%s'" %
                   (hyp_path, final_path), file=sys.stderr)
             raise
@@ -373,7 +379,7 @@ def compare_align(hyp_dir, final_path, prefix=None, quiet=False, output=None):
     try:
         r = _run_compare(all_hyp_ctms, hyp_ctm_aligned, h_n_ctm,
                          h_n_doc, all_final_ctms, quiet=quiet)
-    except:
+    except BaseException:
         print("Exception comparing 'final' and 'initial' of '%s'" % final_path)
         r = (-1, -1, 0, 0,
              -1, -1, 0,

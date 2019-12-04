@@ -3,6 +3,7 @@
 """
 from pathos.multiprocessing import ProcessingPool as Pool
 
+
 def parallel_map(func, array, n_workers):
     def compute_batch(i):
         try:

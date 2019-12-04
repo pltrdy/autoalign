@@ -9,7 +9,7 @@ def algned_to_ctm_text(algned_path, out_path):
 
     final_ctms = algned["final"]["ctm"]
     out = open(out_path, "w")
-    ref_path = out_path+".seg.ref"
+    ref_path = out_path + ".seg.ref"
     out_ref = open(ref_path, "w")
 
     prev_aligned = None

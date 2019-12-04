@@ -18,9 +18,9 @@ class Aligner(autoalign.Module):
         assert_size(scores, [n_ctm, n_docx])
 
         o = self.do_process(scores, ctm_slices, docx_slices, **kwargs)
-        if type(o) == tuple:
+        if isinstance(o, tuple):
             assert len(o) == 2
-            assert type(o[1]) == dict
+            assert isinstance(o[1], dict)
             d = {"alignment": o[0]}
             for k, v in o[1].items():
                 d[k] = v
@@ -41,14 +41,15 @@ class DiagonalAligner(Aligner):
         cur_d = 0
 
         path = [(cur_d, cur_c)]
-        while cur_c < len_ctm-1 or cur_d < len_doc-1:
+        while cur_c < len_ctm - 1 or cur_d < len_doc - 1:
             scores[cur_c, cur_d] = 1
 
             cur_ratio = cur_c if cur_d == 0 else cur_c / cur_d
-            if (cur_ratio < ratio or cur_d == len_doc-1) and cur_c + 1 < len_ctm:
+            if (cur_ratio < ratio or cur_d ==
+                    len_doc - 1) and cur_c + 1 < len_ctm:
                 cur_c += 1
                 print("cur_c %d %d" % (cur_c, len_ctm))
-            elif cur_d+1 < len_doc:
+            elif cur_d + 1 < len_doc:
                 cur_d += 1
                 print("cur_d: %d %d" % (cur_d, len_doc))
             else:
@@ -71,7 +72,8 @@ class DiagonalAligner(Aligner):
 
 
 class DPAligner(Aligner):
-    def __init__(self, dp_score_scale_fct=lambda x: x, dp_dgw=0.9999, dp_dhw=0.9999,):
+    def __init__(self, dp_score_scale_fct=lambda x: x,
+                 dp_dgw=0.9999, dp_dhw=0.9999,):
         super(DPAligner, self).__init__()
         self.dp_score_scale_fct = to_fct(dp_score_scale_fct)
         self.dp_dhw = dp_dhw
@@ -85,7 +87,7 @@ class DPAligner(Aligner):
                    **_):
         """
         Args:
-            scores(Tensor): [#ctm x #docx] 
+            scores(Tensor): [#ctm x #docx]
         """
         # raise ValueError()
         # dp_* kwargs can be set from both constructor and do_process
@@ -120,8 +122,8 @@ class DPAligner(Aligner):
                 len(sum(aligned_slices, [])), len(ctm_slices))
 
         if dp_output_path is not None:
-            viz_dp(table, scores, table, hist, docx_slices, ctm_slices, dp_path,
-                   output_path=dp_output_path)
+            viz_dp(table, scores, table, hist, docx_slices, ctm_slices,
+                   dp_path, output_path=dp_output_path)
 
         print(scores[:5, :5])
         print(table[:5, :5])

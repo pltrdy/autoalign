@@ -1,1 +1,1 @@
-from autoalign.align.aligner import Aligner, DPAligner, DiagonalAligner
+from autoalign.align.aligner import Aligner, DPAligner, DiagonalAligner  # noqa

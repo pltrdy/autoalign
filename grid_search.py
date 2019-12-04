@@ -13,7 +13,7 @@ def subgrid(params, subgrids):
 
 
 def grid_search_params(params):
-    """ 
+    """
         Given a dict of parameters, return a list of dicts
     """
     params_list = []

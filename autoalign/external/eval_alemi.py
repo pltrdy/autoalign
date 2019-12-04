@@ -75,7 +75,7 @@ def compare(hyp, ref):
         raise ValueError("Not the same about of borders %d != %d"
                          % (len(b_hyp), len(b_ref)))
 
-    k = round(1/2*(len(b_hyp)/sum(b_ref))-1)
+    k = round(1 / 2 * (len(b_hyp) / sum(b_ref)) - 1)
     window_diff = windowdiff(b_hyp, b_ref, k=k, boundary=1)
 
     for (cl, cid), (rl, rid) in zip(n_hyp, n_ref):
@@ -94,10 +94,10 @@ def compare(hyp, ref):
     results = {
         "n_seg": tot_seg,
         "aligned_seg": aligned_seg,
-        "r_seg": aligned_seg/tot_seg,
+        "r_seg": aligned_seg / tot_seg,
         "n_words": tot_words,
         "aligned_words": aligned_words,
-        "r_words": aligned_words/tot_words,
+        "r_words": aligned_words / tot_words,
         "windiff": window_diff,
     }
     result_path = hyp.replace(alemi_ext, result_ext)

@@ -153,11 +153,12 @@ class SentenceEmbeddingSimilarity:
 
         if output_path is not None:
             print("Saving similarities to: '%s'" % output_path)
-            obj = {'similarities': all_similarities,  'sequences': sequences}
+            obj = {'similarities': all_similarities, 'sequences': sequences}
             torch.save(obj, output_path)
         return all_similarities
 
-    def texttiling(self, sequences, similarity_fct=heuristic_max_similarity, window_size=5, output_path=None):
+    def texttiling(self, sequences, similarity_fct=heuristic_max_similarity,
+                   window_size=5, output_path=None):
         """
         Args:
             sequences: iterator on sequence (may be a file, a list etc...)
@@ -190,11 +191,12 @@ class SentenceEmbeddingSimilarity:
 
         if output_path is not None:
             print("Saving similarities to: '%s'" % output_path)
-            obj = {'similarities': all_similarities,  'sequences': sequences}
+            obj = {'similarities': all_similarities, 'sequences': sequences}
             torch.save(obj, output_path)
 
 
-def main(word2vec_path, textfile_path, n_vectors, window_size, similarity, eos, output_path):
+def main(word2vec_path, textfile_path, n_vectors,
+         window_size, similarity, eos, output_path):
     ses = SentenceEmbeddingSimilarity(word2vec_path, n_vectors)
     sequences = ses.sequences_from_file(textfile_path, eos=eos)
     ses.texttiling(sequences, similarity_fct=SIMILARITY_FCT[similarity], window_size=window_size,

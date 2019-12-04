@@ -19,7 +19,8 @@ def read_ctm(ctm_path):
     return text
 
 
-def main(ctm_path, output_path=None, k=20, w=40, smoothing_width=10, smoothing_rounds=5):
+def main(ctm_path, output_path=None, k=20, w=40,
+         smoothing_width=10, smoothing_rounds=5):
     text = read_ctm(ctm_path)
 
     o = texttiling_text(text, k, w, smoothing_width, smoothing_rounds)

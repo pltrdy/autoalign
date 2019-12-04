@@ -34,14 +34,15 @@ class PaddingGroup(ScoreGroup):
     def do_scatter(self, sentences, **_):
         padded = torch.nn.utils.rnn.pad_sequence(sentences)
         padded.transpose_(0, 1)
-        return padded, [slice(i, i+1) for i in range(len(sentences))]
+        return padded, [slice(i, i + 1) for i in range(len(sentences))]
 
     def do_gather(self, scores, **_):
         return scores
 
 
 class SlidingWindowGroup2(ScoreGroup):
-    def __init__(self, sen_aggregate_fct, score_reduce_fct, initial_gather_score=0.0):
+    def __init__(self, sen_aggregate_fct, score_reduce_fct,
+                 initial_gather_score=0.0):
         super(SlidingWindowGroup, self).__init__(
             sen_aggregate_fct, score_reduce_fct)
 
@@ -107,7 +108,8 @@ class SlidingWindowGroup2(ScoreGroup):
 
 
 class SlidingWindowGroup(ScoreGroup):
-    def __init__(self, sen_aggregate_fct, score_reduce_fct, initial_gather_score=0.0):
+    def __init__(self, sen_aggregate_fct, score_reduce_fct,
+                 initial_gather_score=0.0):
         super(SlidingWindowGroup, self).__init__(
             sen_aggregate_fct, score_reduce_fct)
 

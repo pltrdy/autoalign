@@ -1,3 +1,5 @@
+*.swp
+
 # Experiments directories
 exp*/*
 

@@ -10,7 +10,7 @@ def describe(element):
     elif isinstance(element, torch.Tensor):
         return "tensor[%s]" % str(list(element.size()))
 
-    elif type(element) == list:
+    elif isinstance(element, list):
         return "list#%d[%s]" % (len(element), "empty"
                                 if len(element) == 0 else describe(element[0]))
 
@@ -51,7 +51,7 @@ def to_fct(fct):
     """
     if is_fct(fct):
         return fct
-    elif type(fct) == str:
+    elif isinstance(fct, str):
         return getattr(autoalign.functions, fct)
     raise ValueError("No function associated with '%s' type" % str(type(fct)))
 

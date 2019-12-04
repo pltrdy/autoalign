@@ -1,7 +1,0 @@
-torch
-stanfordnlp
-sklearn
-python-docx
-nltk
-rouge
-pathos

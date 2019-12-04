@@ -6,7 +6,8 @@ from validate_exp import validate
 from compare_align import INITIAL
 
 
-def validate_criterion(cmp_file, params_path, mapping_path, gt=None, root="validation", prefix="valid", n_thread=4, force=False, skip_alignment=False, skip_aligned=False, cmp_version=1, aligned_dir="./aligned", one_doc_per_ctm=False):
+def validate_criterion(cmp_file, params_path, mapping_path, gt=None, root="validation", prefix="valid", n_thread=4,
+                       force=False, skip_alignment=False, skip_aligned=False, cmp_version=1, aligned_dir="./aligned", one_doc_per_ctm=False):
     criterion = None
 
     if gt is not None:
@@ -43,12 +44,14 @@ if __name__ == "__main__":
     parser.add_argument("-root", type=str)
     parser.add_argument("-prefix", type=str)
     parser.add_argument("-params_path", type=str, required=True)
-    parser.add_argument("-mapping_path", type=str, required=True)
+    parser.add_argument("-mapping_name")
+    parser.add_argument("-mapping_path")
     parser.add_argument("-n_thread", "-t", type=int, default=4)
     parser.add_argument("-force", action="store_true")
     parser.add_argument("-skip_alignment", action="store_true")
     parser.add_argument("-skip_aligned", action="store_true")
-    parser.add_argument("-aligned_dir", default="./aligned")
+    parser.add_argument("-aligned_dir")
+    parser.add_argument("-aligned_name")
     parser.add_argument("-no_compare", action="store_true")
 
     parser.add_argument("-cmp_path", "-f", type=str, required=True)
@@ -56,12 +59,15 @@ if __name__ == "__main__":
     parser.add_argument("-cmp_version", "-cmp_v", type=int, default=1)
     parser.add_argument("-one_doc_per_ctm", action="store_true")
 
+    mapping = autoalign.mapping.load_mapping_args(args)
+    aligned_dir = autoalign.aligned.get_aligned_args(args)
+
     args = parser.parse_args()
-    validate_criterion(args.cmp_path, args.params_path, args.mapping_path, args.gt,
+    validate_criterion(args.cmp_path, args.params_path, mapping, args.gt,
                        args.root, args.prefix, args.n_thread,
                        skip_alignment=args.skip_alignment,
                        skip_aligned=args.skip_aligned,
                        force=args.force,
                        cmp_version=args.cmp_version,
-                       aligned_dir=args.aligned_dir,
+                       aligned_dir=aligned_dir,
                        one_doc_per_ctm=args.one_doc_per_ctm)

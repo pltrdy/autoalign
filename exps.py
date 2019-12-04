@@ -7,7 +7,6 @@ import autoalign
 from autoalign.legacy.segment_job import CBOW_WORD2VEC_PATH, SKIP_WORD2VEC_PATH
 
 
-
 ctm_paths = [
     "/home/pltrdy/ubiqus_data/wave3/cdata/797_294/audio/797_294_OCIRP.MP3.tdnnf.ctm"
 ]
@@ -92,7 +91,7 @@ exps = [{
             "overlap": [0]
         },
         "scorer_prepare_kwargs": {
-            "pooling_fct": ["sentence_sum_pooling",  "sentence_max_pooling", "sentence_mean_pooling"]
+            "pooling_fct": ["sentence_sum_pooling", "sentence_max_pooling", "sentence_mean_pooling"]
         }
     }
 }, {
@@ -374,7 +373,7 @@ dpaligner_dgw_dhw = [
     ("autoalign.align.DPAligner", {
         "dp_score_scale_fct": "pow4", "dp_dhw": 1, "dp_dgw": 1}),
     ("autoalign.align.DPAligner", {
-        "dp_score_scale_fct": "pow4",              "dp_dgw": 0.9}),
+        "dp_score_scale_fct": "pow4", "dp_dgw": 0.9}),
     ("autoalign.align.DPAligner", {
         "dp_score_scale_fct": "pow4", "dp_dhw": 0.9}),
     ("autoalign.align.DPAligner", {
@@ -382,7 +381,7 @@ dpaligner_dgw_dhw = [
     ("autoalign.align.DPAligner", {
         "dp_score_scale_fct": "pow4", "dp_dhw": 1}),
     ("autoalign.align.DPAligner", {
-        "dp_score_scale_fct": "pow4",                "dp_dgw": 1}),
+        "dp_score_scale_fct": "pow4", "dp_dgw": 1}),
 ]
 exp16 = {
     "root": "exp16",
@@ -817,7 +816,8 @@ exp40["params"]["aligner"] = aligned_reproduce_dhw_dgw
 exps.append(exp40)
 
 
-# exp41: exp8 w/ dp_one_doc_per_ctm; same in idea than 34 but we suspect it to have failed
+#  exp41: exp8 w/ dp_one_doc_per_ctm; same in idea than 34 but we suspect
+# it to have failed
 exp8_best_aligner = []
 for dgw in [0.9999, 1]:
     for dhw in [0.9999, 1]:
@@ -895,7 +895,7 @@ exps.append(exp46)
 exp47 = deepcopy(exp35)
 exp47["root"] = "exp47"
 exp47["sub_params"]["scorer_prepare_kwargs"]["pooling_fct"] = [
-    "sentence_sum_pooling",  "sentence_max_pooling", "sentence_mean_pooling"]
+    "sentence_sum_pooling", "sentence_max_pooling", "sentence_mean_pooling"]
 exps.append(exp47)
 
 # 48: 35 w/ stopwords (note 46 uses pre-trained embeddings)
@@ -911,7 +911,7 @@ exp49["root"] = "exp49"
 exp49["params"]['segmenter'][0][1]['tokenizer_properties_name'] = 'french'
 exp49["sub_params"]["scorer_prepare_kwargs"]["stopwords"] = ["fr_big", None]
 exp49["sub_params"]["scorer_prepare_kwargs"]["pooling_fct"] = [
-    "sentence_sum_pooling",  "sentence_max_pooling", "sentence_mean_pooling"]
+    "sentence_sum_pooling", "sentence_max_pooling", "sentence_mean_pooling"]
 exp49["params"]["scorer"] = ["autoalign.score.TFIDFScorer"]
 exps.append(exp49)
 

@@ -54,7 +54,7 @@ class Scorer(autoalign.Module):
         # raise ValueError()
         print("@Scorer.process after prepare ", describe(ctm_sentences))
         # print("types: %s" % "\n- ".join(["%d %s" % (i, describe(_))
-        #                                  for (i, _) in enumerate(ctm_sentences)]))
+        # for (i, _) in enumerate(ctm_sentences)]))
         if score_group is not None:
             print("before ctm scatter: %d sentences" % len(ctm_sentences))
             ctm_sentences, ctm_group_slices = score_group.scatter(
@@ -103,7 +103,8 @@ class SentenceEmbeddingScorer(Scorer):
 
         self.ses = SentenceEmbeddingSimilarity(word2vec_path, n_vectors)
 
-    def prepare(self, sequences, pooling_fct='sentence_sum_pooling', min_len=2, stopwords=None, with_scores=False, **_):
+    def prepare(self, sequences, pooling_fct='sentence_sum_pooling',
+                min_len=2, stopwords=None, with_scores=False, **_):
         if stopwords == "fr":
             stopwords = autoalign.stopwords.fr
         elif stopwords == "fr_big":
@@ -111,7 +112,7 @@ class SentenceEmbeddingScorer(Scorer):
         elif stopwords is not None:
             raise ValueError("No such stopwords '%s'" % stopwords)
 
-        if type(pooling_fct) == str:
+        if isinstance(pooling_fct, str):
             try:
                 pooling_fct = getattr(autoalign.score.pooling, pooling_fct)
             except AttributeError:
@@ -134,13 +135,14 @@ class SentenceEmbeddingScorer(Scorer):
                 emb) > 0 else torch.zeros(self.ses.n_dim)
             if isinstance(emb, torch.Tensor):
                 embs += [emb]
-            elif type(emb) == list:
+            elif isinstance(emb, list):
                 embs += emb
 
         print("describing embs after SES.prepare %s" % describe(embs))
         return embs
 
-    def do_process(self, ctm_sentences, docx_sentences, metric='cosine_similarity', **kwargs):
+    def do_process(self, ctm_sentences, docx_sentences,
+                   metric='cosine_similarity', **kwargs):
         import torch
         if isinstance(ctm_sentences, list):
             ctm_sentences = torch.stack(ctm_sentences, 0)
@@ -161,7 +163,7 @@ class SentenceEmbeddingScorer(Scorer):
         # print("exit @scorer do_process")
         print("metric: %s" % str(metric))
         if not is_fct(metric):
-            if type(metric) == str:
+            if isinstance(metric, str):
                 metric = getattr(autoalign.score.metric, metric)
             else:
                 raise ValueError("metric must be a function or str")
@@ -171,7 +173,8 @@ class SentenceEmbeddingScorer(Scorer):
 
 
 class FastEmbeddingDTW(SentenceEmbeddingScorer):
-    def do_process(self, ctm_sentences, docx_sentences, metric='cosine_similarity', **kwargs):
+    def do_process(self, ctm_sentences, docx_sentences,
+                   metric='cosine_similarity', **kwargs):
         import torch
         if isinstance(ctm_sentences, list):
             ctm_sentences = torch.stack(ctm_sentences, 0)
@@ -179,7 +182,7 @@ class FastEmbeddingDTW(SentenceEmbeddingScorer):
             docx_sentences = torch.stack(docx_sentences, 0)
 
         if not is_fct(metric):
-            if type(metric) == str:
+            if isinstance(metric, str):
                 metric = getattr(autoalign.score.metric, metric)
             else:
                 raise ValueError("metric must be a function or str")
@@ -193,8 +196,8 @@ class FastEmbeddingDTW(SentenceEmbeddingScorer):
         s = torch.zeros([len(ctm_sentences), len(docx_sentences)])
 
         for k, v in scores.items():
-            x = k[0]-1
-            y = k[1]-1
+            x = k[0] - 1
+            y = k[1] - 1
             s[x, y] = 1 / (v[0] + 1e-8)
         # print(max([k[0] for k in scores.keys()]))
         # print(max([k[1] for k in scores.keys()]))
@@ -217,10 +220,11 @@ class TFIDFScorer(Scorer):
         self.vectorizer = TfidfVectorizer()
         self.normalizer = Normalizer(copy=False)
 
-    def prepare(self, sentences, *args, lsa_components=10, with_scores=False, **kwargs):
+    def prepare(self, sentences, *args, lsa_components=10,
+                with_scores=False, **kwargs):
         self.lsa = TruncatedSVD(n_components=lsa_components)
 
-        if type(sentences[0]) == list:
+        if isinstance(sentences[0], list):
             if with_scores:
                 sentences = [" ".join([_[0] for _ in s]) for s in sentences]
             else:
@@ -309,9 +313,9 @@ class RougeScorer(Scorer):
         s2 = [_["f"] for _ in s2]
 
         if self.all_metrics:
-            s = [(_1+_2+_l)/3 for _1, _2, _l in zip(s1, s2, sl)]
+            s = [(_1 + _2 + _l) / 3 for _1, _2, _l in zip(s1, s2, sl)]
         else:
-            s = [(_1+_2)/2 for _1, _2 in zip(s1, s2)]
+            s = [(_1 + _2) / 2 for _1, _2 in zip(s1, s2)]
 
         t = torch.tensor(s).view(n_ctm, n_docx)
         return t

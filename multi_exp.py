@@ -141,7 +141,7 @@ def run_params(root, prefix, params, n_thread=1, skip_aligned=True):
             try:
                 inst_id = instantiated_params[ik].index(v)
                 inst = instantiated_objects[ik][inst_id]
-                print("Found repetitive key %s" % ik)
+                print("Found repetitive key: '%s'" % ik)
             except ValueError:
                 try:
                     if params[i][ik] is None:
@@ -152,7 +152,7 @@ def run_params(root, prefix, params, n_thread=1, skip_aligned=True):
                     print("Cannot instantiate %s" % str(params[i][ik]))
                     raise e
                 try:
-                    assert type(inst) == list
+                    assert isinstance(inst, list)
                     assert len(inst) == 1, "%d != 1" % len(inst)
                 except AssertionError:
                     print(params)
@@ -163,14 +163,14 @@ def run_params(root, prefix, params, n_thread=1, skip_aligned=True):
 
                 instantiated_params[ik] += [params[i][ik]]
                 instantiated_objects[ik] += [inst]
-                print("Instantiating key %s" % ik)
+                print("Instantiating key '%s'" % ik)
 
             iparams[i][ik] = inst
     try:
         parallel_map(run_exp_args, [
             (root, p, prefix, skip_aligned) for p in iparams],
             n_thread)
-    except:
+    except BaseException:
         raise
     #  with Pool(processes=n_thread) as pool:
     #      pool.map(run_exp_args, [(root, p, prefix, skip_aligned)

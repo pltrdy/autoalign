@@ -64,7 +64,7 @@ def compare(c99, ref):
     alignment = []
 
     def _numericalize_segments(lines):
-        """From lines w/ separator, returns 
+        """From lines w/ separator, returns
            [(line, seg_id),]
         """
         numericalized = []
@@ -87,7 +87,7 @@ def compare(c99, ref):
     n_ref, b_ref = _numericalize_segments(ref_lines)
     assert len(b_c99) == len(b_ref)
 
-    k = round(1/2*(len(b_c99)/sum(b_ref))-1)
+    k = round(1 / 2 * (len(b_c99) / sum(b_ref)) - 1)
     window_diff = windowdiff(b_c99, b_ref, k=k, boundary=1)
 
     for (cl, cid), (rl, rid) in zip(n_c99, n_ref):
@@ -106,10 +106,10 @@ def compare(c99, ref):
     results = {
         "n_seg": tot_seg,
         "aligned_seg": aligned_seg,
-        "r_seg": aligned_seg/tot_seg,
+        "r_seg": aligned_seg / tot_seg,
         "n_words": tot_words,
         "aligned_words": aligned_words,
-        "r_words": aligned_words/tot_words,
+        "r_words": aligned_words / tot_words,
         "windiff": window_diff,
     }
     result_path = c99.replace(c99_ext, result_ext)

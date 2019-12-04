@@ -1,15 +1,14 @@
 #!/usr/bin/env python
 import os
 import json
+import autoalign
 
 from copy import deepcopy
 from multi_exp import run_params
 
 
-def align_mapping(prefix, mapping_path, param_path, param_id, root_dir, out_dir, skip_aligned=True, subfolder=False, no_viz_dp=False, n_thread=8):
-
-    with open(mapping_path, 'r') as f:
-        mapping = json.load(f)
+def align_mapping(prefix, mapping, param_path, param_id, root_dir, out_dir,
+                  skip_aligned=True, subfolder=False, viz_dp=False, n_thread=8):
 
     with open(param_path) as f:
         params = json.load(f)
@@ -18,7 +17,7 @@ def align_mapping(prefix, mapping_path, param_path, param_id, root_dir, out_dir,
     print(params)
 
     all_params = []
-    for job in mapping:
+    for h, pair in mapping:
         job_dir = job["dir"]
         job_root = os.path.join(root_dir, job_dir)
 
@@ -42,7 +41,7 @@ def align_mapping(prefix, mapping_path, param_path, param_id, root_dir, out_dir,
             p['ctm_paths'] = ctm_paths
             p['name'] = os.path.basename(p['docx_path'])
             p['align_slices_verbose'] = True
-            if no_viz_dp:
+            if not viz_dp:
                 p['dp_output_path'] = None
             all_params += [p]
     run_params(out_dir, prefix, all_params,
@@ -53,20 +52,20 @@ if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
     parser.add_argument("-prefix", required=True)
-    parser.add_argument("-mapping", "-m", required=True)
+    parser.add_argument("-mapping_name")
+    parser.add_argument("-mapping_path")
     parser.add_argument("-out_dir", "-o", required=True)
-    parser.add_argument("-param_path",
-                        default="./exp35/exp_35_params.json")
-    parser.add_argument("-param_id", "-i",
+    parser.add_argument("-param_path", required=True)
+    parser.add_argument("-param_id", "-id",
                         default=146, type=int)
-    parser.add_argument("-root_dir", default="/home/pltrdy/ubiqus_data/wave5")
+    parser.add_argument("-root_dir", default="")
     parser.add_argument("-no_skip_aligned", action="store_true")
     parser.add_argument("-subfolder", action="store_true")
-    parser.add_argument("-no_viz_dp", action="store_true")
+    parser.add_argument("-viz_dp", action="store_true")
     parser.add_argument("-n_thread", type=int, default=8)
     args = parser.parse_args()
 
-    # filtered_filelist= "/home/pltrdy/ubiqus_data/wave4/filtered_doc_20190416/filtered"
+    mapping = autoalign.mapping.load_mapping_args(args)
 
-    align_mapping(args.prefix, args.mapping, args.param_path, args.param_id, args.root_dir, args.out_dir,
-                  skip_aligned=not args.no_skip_aligned, subfolder=args.subfolder, no_viz_dp=args.no_viz_dp, n_thread=args.n_thread)
+    align_mapping(args.prefix, mapping, args.param_path, args.param_id, args.root_dir, args.out_dir,
+                  skip_aligned=not args.no_skip_aligned, subfolder=args.subfolder, viz_dp=args.viz_dp, n_thread=args.n_thread)

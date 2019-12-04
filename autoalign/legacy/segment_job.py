@@ -235,12 +235,14 @@ class JobSegmenter(object):
                 time.sleep(0.75)
         return r
 
-    def get_sentences(self, words, lower=True, no_minimum=False, with_scores=False, debug=False):
+    def get_sentences(self, words, lower=True, no_minimum=False,
+                      with_scores=False, debug=False):
         # return [_.split() for _ in text.split(".")]
         return self.corenlp_get_sentences(words, lower=lower, no_minimum=no_minimum,
                                           with_scores=with_scores, debug=debug)
 
-    def corenlp_get_sentences(self, words, lower=True, no_minimum=False, with_scores=False, debug=False):
+    def corenlp_get_sentences(self, words, lower=True,
+                              no_minimum=False, with_scores=False, debug=False):
         """
         Args:
             sentences: list[list[word]] if not with_scores
