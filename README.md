@@ -79,8 +79,8 @@ mkdir -p "$out_dir"
 
 
 #### New experiment
-*WIP, tldr, define grid-search parameters in `exps.py` run with `./multi_exps.py`
+*In short, we define grid-search parameters in `exps.py` and run it by specifying the experiment id to e.g. `./multi_exps.py $id`*
 
 
 ## External models
-WIP
+*External models, namely `TextTiling`, `C99` (+ preliminary work with Alemi's Segmentation) can be found under [`autoalign/external`](https://github.com/pltrdy/autoalign/tree/master/autoalign/external)*
