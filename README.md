@@ -1,11 +1,20 @@
 # Align then Summarize: Automatic Alignment Methods for Summarization Corpus Creation
 ## About
-This repository contain code of the paper (under review) with instructions for reproduction.
+This repository contain code of the paper [Align then Summarize: Automatic Alignment Methods for Summarization Corpus Creation](https://arxiv.org/abs/2007.07841)  with instructions for reproduction.
 
 We also provide [`public_meetings`](https://github.com/pltrdy/public_meetings) a novel corpus of meetings (with pairs of transcriptions and reports).
 
-
-
+**Cite the paper**: 
+```bib
+@inproceedings{Tardy2020,
+author = {Tardy, Paul and Janiszek, David and Est{\`{e}}ve, Yannick and Nguyen, Vincent},
+booktitle = {Proceedings of the 12th Conference on Language Resources and Evaluation (LREC 2020)}, 
+keywords = {Alignment,Corpus Annotation,Summarization},
+pages = {6718--6724},
+title = {{Align then Summarize: Automatic Alignment Methods for Summarization Corpus Creation}},
+year = {2020}
+}
+```
 ## Getting Started
 
 **1) Clone the repo (along w/ sub-repositories for external models):**   
