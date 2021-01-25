@@ -1,0 +1,1186 @@
+[
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4"
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_0"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square"
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_1"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_2"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_3"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_4"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_5"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_6"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_7"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_8"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_9"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_10"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_11"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_12"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_13"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_14"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_15"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_16"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_17"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_18"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 0.9999,
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_19"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_20"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_21"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 1,
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_22"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 1,
+        "dp_dgw": 0.999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_23"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 1,
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_24"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 1,
+        "dp_dgw": 0.9999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_25"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 1,
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_26"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 1,
+        "dp_dgw": 0.99999
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_27"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "pow4",
+        "dp_dhw": 1,
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_28"
+  },
+  {
+    "segmenter": [
+      "autoalign.segment.SimpleSegmenter",
+      {
+        "interventions": true,
+        "use_tags": true,
+        "verbose": false,
+        "sentence_min_length": 2,
+        "tokenizer_properties_name": "french"
+      }
+    ],
+    "scorer": "autoalign.score.SentenceEmbeddingScorer",
+    "aligner": [
+      "autoalign.align.DPAligner",
+      {
+        "dp_score_scale_fct": "square",
+        "dp_dhw": 1,
+        "dp_dgw": 1
+      }
+    ],
+    "ctm_paths": [],
+    "docx_path": "",
+    "score_group": [
+      "autoalign.score.SlidingWindowGroup",
+      [
+        "sum",
+        "mul",
+        1.0
+      ]
+    ],
+    "dp_one_doc_per_ctm": true,
+    "scatter_kwargs": {
+      "size": 2,
+      "overlap": 1
+    },
+    "scorer_prepare_kwargs": {
+      "pooling_fct": "sentence_sum_pooling"
+    },
+    "name": "exp_43_29"
+  }
+]
